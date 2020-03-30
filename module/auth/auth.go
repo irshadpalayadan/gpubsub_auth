@@ -1,8 +1,11 @@
 package auth
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
+	gpubsub "github.com/irshadpalayadan/gpubsub_auth/module/pubsub"
 	"github.com/sirupsen/logrus"
 )
 
@@ -122,6 +125,8 @@ func SignUp(ctx *gin.Context) {
 
 	userList = append(userList, newUser)
 
+	publishStatus := gpubsub.Publish("gpubsub-272721", "signup", "helloworld")
+	fmt.Println(publishStatus)
 	ctx.JSON(200, gin.H{"status": "pending", "msg": "user created successfully", "data": newUser})
 
 }
