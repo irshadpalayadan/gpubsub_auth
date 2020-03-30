@@ -6,7 +6,7 @@ import (
 )
 
 func getServerStatus(ctx *gin.Context) {
-	ctx.JSON(200, "server is healthy")
+	ctx.JSON(200, "auth server is healthy")
 }
 
 func main() {
